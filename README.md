@@ -37,7 +37,9 @@ npm run build:web
 npm run pack
 ```
 
-`build:web` writes renderer assets to `build/`. `pack` creates an unpacked desktop app in `dist/`. `npm run build` creates installers for the current platform; signing may require platform-specific credentials. To create an unsigned local macOS package, set `CSC_IDENTITY_AUTO_DISCOVERY=false` when packaging. `npm run release` explicitly publishes with electron-builder and requires release credentials.
+`build:web` writes renderer assets to `build/`. `pack` creates an unpacked desktop app in `dist/`. `npm run build` creates installers for the current platform. Local packaging commands (`pack`, `build`, and `electron-build`) explicitly skip macOS code signing, so they won't automatically select a certificate from your keychain or wait for signing approval. `npm run release` keeps signing enabled and explicitly publishes with electron-builder; it requires signing and release credentials.
+
+If an older packaging run is waiting at `signing`, stop it with **Ctrl+C**, then rerun `npm run pack`. A successful local macOS build reports `skipped macOS code signing` and writes `dist/mac-arm64/EbbinMemo.app` on Apple Silicon (or `dist/mac/EbbinMemo.app` on Intel).
 
 CI runs the regression tests and packages the app on macOS, Windows, and Linux. Tests cover reminder boundaries, restart catch-up, long intervals, legacy memo compatibility, and deletion of duplicate titles.
 
