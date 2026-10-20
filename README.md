@@ -19,9 +19,11 @@ The first desktop launch may download Electron. `npm start` starts the local Vit
 
 ## Use
 
-1. Enter a memo and select **Create**, or press Enter.
+1. Enter a memo and select **Save memo**, or press **Ctrl/⌘ + Enter**. Memos can span multiple lines.
 2. Keep the app running. Closing or minimizing its window hides it in the system tray when a tray is available.
 3. Open it again from the tray. Use the tray's **Quit** command to exit fully.
+
+Use **Find a thought…** to search your notebook. Each memo shows its next reminder and seven dots that track reminders sent. Select **How it works** for the complete schedule.
 
 Reminders occur after 10 minutes, 1 hour, 5 hours, 1 day, 5 days, 25 days, and 120 days (approximately four months). The app checks every 15 seconds and when its window regains focus. After sleep or reopening, it sends one catch-up reminder per memo for the latest missed interval. Delivered intervals are saved so they are not repeated on every launch. Delivery records that the reminder was raised, rather than that the memo was reviewed. OS notification settings may suppress native notifications; the latest reminder also appears inside the app.
 

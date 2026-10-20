@@ -16,7 +16,8 @@ function showWindow() {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 620, height: 460, minWidth: 380, minHeight: 380,
+    width: 1080, height: 820, minWidth: 380, minHeight: 540,
+    backgroundColor: '#f7f7f2',
     icon: path.join(assetsDirectory, 'icon.png'),
     webPreferences: {
       backgroundThrottling: false,
