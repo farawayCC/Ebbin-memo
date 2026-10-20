@@ -1,31 +1,17 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-
-.App {
-  min-height: 100vh;
-  width: 100%;
-  margin: auto;
-  background-color: cornsilk;
-}
-
-.new-memo {
-  padding: 20px;
-  padding-top: 35px;
-  text-align: center;
-}
-
-.add-memo-input {
-  width: 100%;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.memo-list {
-  height: 80vh;
-  overflow: auto;
-  padding: 20px;
-}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: #292d28; background: cornsilk; }
+.App { min-height: 100vh; max-width: 900px; margin: auto; }
+.new-memo { padding: 32px 24px 20px; }
+label { display: block; margin-bottom: 10px; font-weight: 600; }
+.input-row { display: flex; gap: 8px; }
+input { min-width: 0; flex: 1; padding: 12px; border: 1px solid #b7bdaf; border-radius: 5px; font: inherit; }
+button { padding: 10px 15px; border: 0; border-radius: 5px; background: #27683a; color: white; font: inherit; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+:focus-visible { outline: 3px solid #4474b4; outline-offset: 2px; }
+.memo-list { padding: 0 24px 24px; }
+.memo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; border-bottom: 1px solid #d8d7c5; }
+.memo > div { min-width: 0; }
+.memo-title { margin: 0 0 5px; white-space: pre-wrap; overflow-wrap: anywhere; }
+time, .empty { color: #64685e; font-size: 14px; }
+.delete { flex-shrink: 0; background: transparent; color: #a02929; border: 1px solid currentColor; }
+.reminder { padding: 14px; background: #e1edd8; border-radius: 5px; overflow-wrap: anywhere; }

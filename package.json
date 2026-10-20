@@ -1,69 +1,65 @@
 {
   "name": "EbbinMemo",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "repository": "https://github.com/farawayCC/Ebbin-memo.git",
   "author": "farawayCC <iosdevfarconsoft@gmail.com>",
   "license": "MIT",
   "description": "Ebbinghaus Memo app for storing plain text for repetitions at regular intervals to achieve increadible levels of assimilation of new knowledge",
-  "main": "public/electron.js",
-  "homepage": "./",
+  "main": "electron/main.cjs",
   "dependencies": {
-    "electron-is-dev": "^2.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
-    "redux": "^4.0.5",
-    "redux-persist": "^6.0.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-redux": "^9.3.0",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
-    "concurrently": "^6.0.0",
-    "cross-env": "^7.0.3",
-    "electron": "^12.0.1",
-    "electron-builder": "^22.10.5",
-    "react-scripts": "^4.0.3",
-    "wait-on": "^5.3.0"
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4",
+    "electron": "^44.9.0",
+    "electron-builder": "^26.15.3"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test --env=jsdom",
-    "react-eject": "react-scripts eject",
-    "electron-build": "electron-builder",
-    "release": "yarn react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "node scripts/dev.cjs",
+    "dev": "node scripts/dev.cjs",
+    "dev:web": "vite",
+    "build:web": "vite build",
+    "test": "node --test tests/*.test.mjs",
+    "build": "npm run build:web && electron-builder --publish never",
+    "pack": "npm run build:web && electron-builder --dir --publish never",
+    "release": "npm run build:web && electron-builder --publish always",
+    "react-start": "vite",
+    "react-build": "vite build",
+    "react-test": "npm test",
+    "electron-build": "electron-builder --publish never"
   },
   "icon": "./public/icon.png",
   "build": {
     "appId": "com.example.EbbinMemo",
     "productName": "EbbinMemo",
-    "copyright": "Copyright © 2021 ${author}",
     "mac": {
-      "icon": "./public/icon.png",
+      "icon": "public/icon.png",
       "category": "public.app-category.productivity"
     },
     "win": {
-      "icon": "./public/icon.png"
+      "icon": "public/icon.png"
     },
     "files": [
-      "./src/*"
+      "build/**/*",
+      "electron/**/*",
+      "package.json"
     ],
     "directories": {
-      "buildResources": "src"
+      "output": "dist",
+      "buildResources": "public"
+    },
+    "linux": {
+      "icon": "public/icon.png",
+      "category": "Education"
     }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "npm@10.9.8"
 }
